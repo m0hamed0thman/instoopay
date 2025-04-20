@@ -12,7 +12,6 @@ public class DBConnection {
             String username = "sql8773056";
             String password = "teQMcmVMVu";
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected successfully!");
         } catch (ClassNotFoundException e) {
             System.err.println("MySQL JDBC Driver not found.");
             e.printStackTrace();
