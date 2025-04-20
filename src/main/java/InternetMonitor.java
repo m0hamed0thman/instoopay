@@ -31,6 +31,7 @@ public class InternetMonitor extends Thread{
             }else {
                 internetStats.setVisible(false);
                 frist = true;
+                break;
             }
             try {
                 Thread.sleep(400);
