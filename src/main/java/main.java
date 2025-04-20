@@ -19,17 +19,16 @@ public class main {
     }
 
     public static void main(String[] args) {
-//        Loading loading = new Loading();
-//        try {
-//            loading.setVisible(true);
-//            int time = 2000 ;
-//            Thread.sleep(time);
-//        }catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        loading.setVisible(false);
-        DBConnection db = new DBConnection();
-        db.getConnection();
-//        InternetMonitor.startMonitoring(1);
+        Loading loading = new Loading();
+            try {
+                Thread.sleep(4000);
+            }catch (InterruptedException e){
+
+            }
+        WelcomeScreen welcomeScreen = new WelcomeScreen();
+        welcomeScreen.setVisible(true);
+        loading.dispose();
+//        Login login = new Login();
+//        login.setVisibl
     }
 }
