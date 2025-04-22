@@ -1,8 +1,10 @@
+package GUI;
+
 import javax.swing.*;
 
 public class Loading extends JFrame {
     public Loading() {
-        ImageIcon icon = new ImageIcon("src/main/resources/Transfergif.gif");
+        ImageIcon icon = new ImageIcon("src/GUI.main/resources/Transfergif.gif");
         JLabel label = new JLabel(icon);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);

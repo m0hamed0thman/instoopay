@@ -1,3 +1,5 @@
+package GUI;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,7 +30,7 @@ public class main {
         WelcomeScreen welcomeScreen = new WelcomeScreen();
         welcomeScreen.setVisible(true);
         loading.dispose();
-//        Login login = new Login();
+//        GUI.Login login = new GUI.Login();
 //        login.setVisibl
     }
 }

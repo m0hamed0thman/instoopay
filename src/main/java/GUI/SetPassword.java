@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,13 +18,13 @@ public class SetPassword extends Father {
         setLayout(null);
 
         // Set up icon
-        ImageIcon icon = new ImageIcon("src/main/resources/icon2.jpeg");
+        ImageIcon icon = new ImageIcon("src/GUI.main/resources/icon2.jpeg");
         setIconImage(icon.getImage());
 
         // Set up image
         JLabel img = new JLabel();
         try {
-            ImageIcon i2 = new ImageIcon("src/main/resources/WhatsApp Image 2025-04-17 at 8.51.06 PM.jpeg");
+            ImageIcon i2 = new ImageIcon("src/GUI.main/resources/WhatsApp Image 2025-04-17 at 8.51.06 PM.jpeg");
             Image image = i2.getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH);
             i2 = new ImageIcon(image);
             img = new JLabel(i2);

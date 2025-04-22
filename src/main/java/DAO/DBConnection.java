@@ -1,3 +1,5 @@
+package DAO;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection; // Use java.sql.Connection, not your class name
@@ -25,3 +27,4 @@ public class DBConnection {
         return connection;
     }
 }
+

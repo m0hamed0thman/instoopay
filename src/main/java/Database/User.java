@@ -3,7 +3,6 @@ package Database;
 import java.util.Date;
 
 public class User {
-    private int userId;
     private String email;
     private String password;
     private String firstName;
@@ -11,23 +10,6 @@ public class User {
     private String fullName;
     private Date birthday;
     private String address;
-    private boolean status;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public String getAddress() {
         return address;

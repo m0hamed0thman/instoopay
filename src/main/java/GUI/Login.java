@@ -1,9 +1,12 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import DAO.User_DAO;
 
 public class Login extends Father {
     private JLabel img;
@@ -17,7 +20,7 @@ public class Login extends Father {
 
     public Login() {
         super();
-        setTitle("Login Page");
+        setTitle("GUI.Login Page");
         setcomponent();
         setupListeners();
     }
@@ -43,7 +46,16 @@ public class Login extends Father {
                 internetMonitor.start();
             }else {
                 if(validation.validateEmail(enteredEmail) && !enteredPassword.isEmpty()) {
-//                login logic is here
+                    // Login logic using User_DAO to check credentials
+                    User_DAO userDao = new User_DAO();
+                    boolean isValidUser = userDao.checkUser(enteredEmail, enteredPassword);
+
+                    if(isValidUser) {
+                        JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        // TODO: Navigate to the main application screen after successful login
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Invalid email or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else if(enteredPassword.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Enter Your Password", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -67,7 +79,7 @@ public class Login extends Father {
         int frameWidth = getWidth();
 
         // Image
-        originalIcon = new ImageIcon("src/main/resources/icon2.jpeg");
+        originalIcon = new ImageIcon("src/GUI.main/resources/icon2.jpeg");
         Image resizedImage = originalIcon.getImage().getScaledInstance(600, 300, Image.SCALE_SMOOTH);
         originalIcon = new ImageIcon(resizedImage);
         img = new JLabel();

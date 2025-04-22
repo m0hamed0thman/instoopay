@@ -1,9 +1,9 @@
+package GUI;
+
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import javax.swing.JOptionPane;
 
 public class InternetMonitor extends Thread{
     private static boolean netIsAvailable() {

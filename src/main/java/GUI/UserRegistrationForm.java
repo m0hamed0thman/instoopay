@@ -1,9 +1,13 @@
+package GUI;
+
+import DAO.User_DAO;
+import Database.User;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.util.Date;
-import java.util.regex.Pattern;
 
 /**
  * User Registration Form for InstaPay application
@@ -16,7 +20,7 @@ public class UserRegistrationForm extends Father {
     private JTextField fullNameField;
     private JSpinner birthDateSpinner;
     private JComboBox<String> genderComboBox;
-    private JTextField emailField;
+    private JTextField addresslField;
     private JButton nextButton;
 
     // Constants
@@ -43,7 +47,7 @@ public class UserRegistrationForm extends Father {
     private JLabel fullNameLabel;
     private JLabel birthDateLabel;
     private JLabel genderLabel;
-    private JLabel emailLabel;
+    private JLabel addressLabel;
 
     /**
      * Creates all UI components
@@ -51,11 +55,11 @@ public class UserRegistrationForm extends Father {
     private void createComponents() {
         // First Name
         firstNameLabel = createLabel("FIRST NAME");
-        firstNameField = new JTextField(10);
+        firstNameField = new JTextField(60);
 
         // Last Name
         lastNameLabel = createLabel("LAST NAME");
-        lastNameField = new JTextField(10);
+        lastNameField = new JTextField(4);
 
         // Full Name
         fullNameLabel = createLabel("FULL NAME");
@@ -74,8 +78,8 @@ public class UserRegistrationForm extends Father {
         genderComboBox = new JComboBox<>(genders);
 
         // Email
-        emailLabel = createLabel("EMAIL");
-        emailField = new JTextField(20);
+        addressLabel = createLabel("Address");
+        addresslField = new JTextField(20);
 
         // Next Button
         nextButton = new JButton("NEXT");
@@ -125,7 +129,7 @@ public class UserRegistrationForm extends Father {
         String fullName = fullNameField.getText().trim();
         Date birthDate = (Date) birthDateSpinner.getValue();
         String gender = (String) genderComboBox.getSelectedItem();
-        String email = emailField.getText().trim();
+        String email = addresslField.getText().trim();
 
         if (!firstName.matches("[a-zA-Z]+")) {
             JOptionPane.showMessageDialog(this, "First name must contain only letters.");
@@ -137,55 +141,67 @@ public class UserRegistrationForm extends Father {
             return;
         }
 
-        if (!validation.validateEmail(email)) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid email address.");
+        if (!email.matches("[a-zA-Z]+")) {
+            JOptionPane.showMessageDialog(this, "Last name must contain only letters.");
             return;
         }
 
-        // Form is valid, print the information
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Full Name: " + fullName);
-        System.out.println("Birth Date: " + birthDate);
-        System.out.println("Gender: " + gender);
-        System.out.println("Email: " + email);
-
-        // Proceed to email verification
-        Email_verification emailVerification = new Email_verification();
-        emailVerification.setVisible(true);
-        dispose();
+//        User user = new User();
+//        user.setFirstName(firstName);
+//        user.setLastName(lastName);
+//        user.setFullName(fullName);
+//        user.setBirthday(birthDate);
+//        user.setAddress(email);
+//        user.setUserId(1);
+//        user.setEmail("othman9128@gmail.com");
+//        user.setPassword("123456");
+//        user.setStatus(true);
+//        User_DAO user_dao = new User_DAO();
+//        user_dao.addUser(user);
+//        Email_verification email_verification = new Email_verification();
+//        email_verification.setVisible(true);
+//        dispose();
     }
 
     /**
      * Positions all components on the frame
      */
     private void layoutComponents() {
+        int panelWidth = this.getWidth();
+
+        // Common horizontal positions
+        int labelWidth = 180;
+        int fieldWidth = 300;
+        int gap = 20;
+        int totalWidth = labelWidth + gap + fieldWidth;
+        int startX = (panelWidth - totalWidth) / 2;
+
         // First Name
-        firstNameLabel.setBounds(50, 50, 180, 40);
-        firstNameField.setBounds(250, 50, 200, 30);
+        firstNameLabel.setBounds(startX, 50, labelWidth, 40);
+        firstNameField.setBounds(startX + labelWidth + gap, 50, fieldWidth, 30);
 
         // Last Name
-        lastNameLabel.setBounds(50, 110, 180, 40);
-        lastNameField.setBounds(250, 110, 200, 30);
+        lastNameLabel.setBounds(startX, 110, labelWidth, 40);
+        lastNameField.setBounds(startX + labelWidth + gap, 110, fieldWidth, 30);
 
         // Full Name
-        fullNameLabel.setBounds(50, 170, 180, 40);
-        fullNameField.setBounds(250, 170, 200, 30);
+        fullNameLabel.setBounds(startX, 170, labelWidth, 40);
+        fullNameField.setBounds(startX + labelWidth + gap, 170, fieldWidth, 30);
 
         // Birth Date
-        birthDateLabel.setBounds(50, 230, 180, 40);
-        birthDateSpinner.setBounds(250, 230, 200, 30);
+        birthDateLabel.setBounds(startX, 230, labelWidth, 40);
+        birthDateSpinner.setBounds(startX + labelWidth + gap, 230, fieldWidth, 30);
 
         // Gender
-        genderLabel.setBounds(50, 290, 180, 40);
-        genderComboBox.setBounds(250, 290, 200, 30);
+        genderLabel.setBounds(startX, 290, labelWidth, 40);
+        genderComboBox.setBounds(startX + labelWidth + gap, 290, 200, 30);
 
         // Email
-        emailLabel.setBounds(50, 350, 180, 40);
-        emailField.setBounds(250, 350, 200, 30);
+        addressLabel.setBounds(startX, 350, labelWidth, 40);
+        addresslField.setBounds(startX + labelWidth + gap, 350, 200, 30);
 
-        // Next Button
-        nextButton.setBounds(220, 420, 150, 40);
+        // Next Button - centered alone
+        nextButton.setBounds((panelWidth - 150) / 2, 420, 150, 40);
 
         // Add components to frame
         add(firstNameLabel); add(firstNameField);
@@ -193,15 +209,21 @@ public class UserRegistrationForm extends Father {
         add(fullNameLabel); add(fullNameField);
         add(birthDateLabel); add(birthDateSpinner);
         add(genderLabel); add(genderComboBox);
-        add(emailLabel); add(emailField);
+        add(addressLabel); add(addresslField);
         add(nextButton);
     }
-
-
-    /**
-     * Main method to start the application
-     */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new UserRegistrationForm());
+        Date date = new Date();
+
+        User user = new User();
+        user.setEmail("othman9128");
+        user.setAddress("Egypt");
+        user.setBirthday(date);
+        user.setPassword("123454567");
+        user.setFullName("Mohamed");
+        user.setFirstName("Mohamed");
+        user.setLastName("Hassan");
+        User_DAO user_dao = new User_DAO();
+        System.out.println(user_dao.checkUser(user.getEmail(),user.getPassword()));
     }
 }

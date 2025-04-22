@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -39,12 +41,12 @@ public class WelcomeScreen extends Father {
         // No icon available in resources
         // Using default Java icon
 
-        // Note: Size and default close operation are set by Father class
+        // Note: Size and default close operation are set by GUI.Father class
     }
 
     private void setupComponents() {
         // Store the original icon for later resizing
-        originalIcon = new ImageIcon("src/main/resources/WhatsApp Image 2025-04-17 at 8.51.06 PM.jpeg");
+        originalIcon = new ImageIcon("src/GUI.main/resources/WhatsApp Image 2025-04-17 at 8.51.06 PM.jpeg");
 
         // Initialize components
         welcomeLabel = new JLabel();
