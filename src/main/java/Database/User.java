@@ -1,6 +1,7 @@
 package Database;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.*;
 
 public class User {
     private String email;
@@ -8,7 +9,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String fullName;
-    private Date birthday;
+    private LocalDate birthday;
     private String address;
 
     public String getAddress() {
@@ -19,11 +20,11 @@ public class User {
         this.address = address;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -67,4 +68,5 @@ public class User {
         this.email = email;
     }
 }
+// Connect to the database
 
